@@ -4,14 +4,14 @@ import './index.scss'
 
 const PrizeWheel = () => {
 
-	const [selectedPrize, setSelectedPrize] = useState(null);
+	// const [selectedPrize, setSelectedPrize] = useState(null);
 	const [shouldSpinWheel, setShouldSpinWheel] = useState(false);
 	const [reset, setReset] = useState(false);
 	const [spinToDeg, setSpinToDeg] = useState('0deg');
 
 	// Circle is 360 degrees, so need to work out the size of each prize section
 	const wheelSectionSize = Math.floor(360 / prizes.length);
-	const numberOfSegments = prizes.length;
+	// const numberOfSegments = prizes.length;
 	const wheelHeight = 25;
 	const spinTime = 7; // seconds
 
