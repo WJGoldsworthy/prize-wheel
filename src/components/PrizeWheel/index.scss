@@ -7,3 +7,31 @@
   left: calc(50% - 25px);
   border-radius: 50%;
 }
+
+.prize-label {
+  font-size: 1.5vw;
+    z-index: 10;
+    float: right;
+    top: calc(50% + 0.75vw);
+    transform: rotate(-18deg);
+    right: 1.5vw;
+    position: relative;
+}
+
+.prize-pointer {
+  height: 2vw;
+  width: 2vw;
+  background-color: black;
+  position: absolute;
+  top: calc(50% - 12.5vw - 2vw);
+  z-index: 20;
+  left: calc(50% - 1vw);
+}
+
+#root {
+  position: fixed;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  background-color: #CFDEE7;
+}

@@ -13,17 +13,26 @@ const PrizeWheel = () => {
 	const wheelSectionSize = Math.floor(360 / prizes.length);
 	// const numberOfSegments = prizes.length;
 	const wheelHeight = 25;
-	const spinTime = 7; // seconds
+	const spinTime = 10; // seconds
 
 	const spinWheel = () => {
 		if (!reset) {
 			setShouldSpinWheel(false)
-			const spinNumber = Math.random();
-			const spinDeg = Math.floor(spinNumber * 1000) + 2000;
+			const spinNumber = Math.ceil(Math.random() * prizes.length);
+			determinePrize(spinNumber);
+			const spinDeg = Math.floor( (360 / prizes.length) * spinNumber ) + 3600;
 			setSpinToDeg(`${spinDeg}deg`);
 			setReset(true);
 		}
 	};
+
+	const determinePrize = spinNumber => {
+		let prize = prizes.length - (spinNumber + 1);
+		if (prize < 0) {
+			prize = prizes.length + prize;
+		}
+		console.log(prize);
+	}
 
 	useEffect(() => {
 		if (reset) {
@@ -36,13 +45,16 @@ const PrizeWheel = () => {
 	}, [reset])
 
 	return (
+		<>
+		<div className="prize-pointer"></div> 
 		<div id="container" className={`prize-wheel spinner ${shouldSpinWheel ? 'spin' : ''}`} style={{
 			'position': 'absolute',
 			'top': `calc(50% - ${wheelHeight / 2}vw)`,
 			'left': `calc(50% - ${wheelHeight / 2}vw)`,
 			'height': `${wheelHeight}vw`,
 			'width': `${wheelHeight}vw`,
-			'transform': 'rotate(0deg)'
+			'transform': 'rotate(0deg)',
+			'overflow': 'hidden'
 		}}>
 			<style dangerouslySetInnerHTML={{__html: `
 				.spin {
@@ -62,6 +74,9 @@ const PrizeWheel = () => {
 			`}} />
 			<div id="wheel" className="spinner-list">
 				{prizes.map((prize, index) => (
+					<>
+
+
 					<div style={{
 						'position': 'absolute',
 						'transformOrigin': '50% 100%',
@@ -74,6 +89,7 @@ const PrizeWheel = () => {
 									height: ${wheelHeight / 2}vw;
 									overflow: hidden;
 									position: relative;
+									z-index: 2;
 								}
 
 								.prize-segment-${index}:before {
@@ -81,6 +97,7 @@ const PrizeWheel = () => {
 									height: inherit;
 									position: absolute;
 									left: 0;
+									z-index: 2;
 									background-color: ${index % 2 ? '#007CBA' : '#FFCA3A'};
 									content: "";
 									border-radius: ${wheelHeight / 2}vw ${wheelHeight / 2}vw 0 0;
@@ -88,14 +105,17 @@ const PrizeWheel = () => {
 									transform: rotate(${180 - wheelSectionSize}deg);
 								}
 							`}} />
+								<p className="prize-label">{prize}</p>
 						</div>
 					</div>
+					</>
 				))}
 			</div>
 			<div className="wheel-spin-button-container" onClick={spinWheel}>
 				<div className="wheel-spin-button" />
 			</div>
 		</div>
+		</>
 	);
 };
 
