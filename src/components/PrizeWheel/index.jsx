@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Confetti from 'react-dom-confetti';
 import { Modal, ModalHeader, ModalFooter, ModalBody } from 'reactstrap';
 import prizes from './prizes';
 import './index.scss'
@@ -15,7 +16,7 @@ const PrizeWheel = () => {
 	// Circle is 360 degrees, so need to work out the size of each prize section
 	const wheelSectionSize = Math.floor(360 / prizes.length);
 	const wheelHeight = 45;
-	const spinTime = 10; // seconds
+	const spinTime = 2; // seconds
 
 	const toggleModal = () => setShowModal(!showModal);
 
@@ -51,9 +52,27 @@ const PrizeWheel = () => {
 		}
 	}, [reset])
 
+	const config = {
+	  angle: 180,
+	  spread: 360,
+	  startVelocity: 40,
+	  elementCount: 70,
+	  dragFriction: 0.12,
+	  elementCount: "200",
+	  duration: 3000,
+	  stagger: 3,
+	  width: "10px",
+	  height: "10px",
+	  perspective: "500px",
+	  colors: ["#4a5ea6", "#480948", "#884a41", "#f9f9fe", "#5164ae"]
+	};
+
 	return (
 		<>
-		<div className="prize-pointer"></div> 
+		<div className="prize-pointer"></div>
+		<div className="confetti"> 
+			<Confetti active={!reset} config={ config } />
+		</div> 
 		<div id="container" className={`prize-wheel spinner ${shouldSpinWheel ? 'spin' : ''}`} style={{
 			'position': 'absolute',
 			'top': `calc(50% - ${wheelHeight / 2}vw)`,
