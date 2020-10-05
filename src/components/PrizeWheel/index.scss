@@ -96,6 +96,76 @@
   height: 70px;
 }
 
+@keyframes jump {
+  0% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(0deg);
+    top: -80px;
+    left: 0px;
+  }
+  35%, 65% {
+    top: -85px;
+  }
+  40% {
+    transform: rotate(-10deg);
+    top: -80px;
+    left: -6px;
+  }
+  50% {
+    top: -87px;
+  }
+  60% {
+    transform: rotate(10deg);
+    top: -80px;
+    left: 6px;
+  }
+  70% {
+    left: 0px;
+    transform: rotate(0deg);
+    top: -80px;
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes jump2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(0deg);
+    top: -80px;
+    right: 0px;
+  }
+  35%, 65% {
+    top: -85px;
+  }
+  40% {
+    transform: rotate(-10deg);
+    top: -80px;
+    right: 6px;
+  }
+  50% {
+    top: -87px;
+  }
+  60% {
+    transform: rotate(10deg);
+    top: -80px;
+    right: -6px;
+  }
+  70% {
+    right: 0px;
+    transform: rotate(0deg);
+    top: -80px;
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 .cinnamon-left {
   float: left;
   position: absolute;
@@ -106,6 +176,8 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  animation: jump 3s infinite;
+
 }
 
 .cinnamon-right {
@@ -119,4 +191,6 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  animation: jump2 3s infinite;
+  animation-delay: 1s;
 }
