@@ -12,7 +12,7 @@ const PrizeWheel = () => {
 	// Circle is 360 degrees, so need to work out the size of each prize section
 	const wheelSectionSize = Math.floor(360 / prizes.length);
 	// const numberOfSegments = prizes.length;
-	const wheelHeight = 25;
+	const wheelHeight = 45;
 	const spinTime = 10; // seconds
 
 	const spinWheel = () => {
@@ -20,7 +20,9 @@ const PrizeWheel = () => {
 			setShouldSpinWheel(false)
 			const spinNumber = Math.ceil(Math.random() * prizes.length);
 			determinePrize(spinNumber);
-			const spinDeg = Math.floor( (360 / prizes.length) * spinNumber ) + 3600;
+			// Offset to deal with centering and correct prize
+			const offset = Math.floor( (360 / prizes.length) / 2 ) + ( Math.floor( 360 / prizes.length ) );
+			const spinDeg = Math.floor( (360 / prizes.length) * spinNumber ) + 3600 + offset;
 			setSpinToDeg(`${spinDeg}deg`);
 			setReset(true);
 		}
@@ -54,7 +56,9 @@ const PrizeWheel = () => {
 			'height': `${wheelHeight}vw`,
 			'width': `${wheelHeight}vw`,
 			'transform': 'rotate(0deg)',
-			'overflow': 'hidden'
+			'overflow': 'hidden',
+			'box-shadow': '0 0 0 8px #FAFAFA',
+			'border-radius': '50%'
 		}}>
 			<style dangerouslySetInnerHTML={{__html: `
 				.spin {
@@ -98,7 +102,7 @@ const PrizeWheel = () => {
 									position: absolute;
 									left: 0;
 									z-index: 2;
-									background-color: ${index % 2 ? '#007CBA' : '#FFCA3A'};
+									background-color: ${index % 2 ? '#FFC700' : '#FF961B'};
 									content: "";
 									border-radius: ${wheelHeight / 2}vw ${wheelHeight / 2}vw 0 0;
 									transform-origin: 50% 100%;
@@ -111,9 +115,10 @@ const PrizeWheel = () => {
 					</>
 				))}
 			</div>
-			<div className="wheel-spin-button-container" onClick={spinWheel}>
-				<div className="wheel-spin-button" />
-			</div>
+		</div>
+		<div className="wheel-spin-button-container" onClick={spinWheel}>
+			<div className="wheel-spin-button" />
+			<div className="center-logo" />
 		</div>
 		</>
 	);

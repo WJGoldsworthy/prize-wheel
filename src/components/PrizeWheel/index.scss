@@ -1,10 +1,10 @@
 .wheel-spin-button-container {
-  height: 50px;
-  width: 50px;
-  background-color: #FF595E;
+  height: 10vw;
+  width: 10vw;
+  background-color: #FAFAFA;
   position: relative;
-  top: calc(50% - 25px);
-  left: calc(50% - 25px);
+  top: calc(50% - 5vw);
+  left: calc(50% - 5vw);
   border-radius: 50%;
 }
 
@@ -12,20 +12,23 @@
   font-size: 1.5vw;
     z-index: 10;
     float: right;
-    top: calc(50% + 0.75vw);
-    transform: rotate(-18deg);
-    right: 1.5vw;
+    top: 78%;
+    transform: rotate(-9deg);
+    right: 2.5vw;
     position: relative;
+    color: white;
 }
 
 .prize-pointer {
-  height: 2vw;
-  width: 2vw;
-  background-color: black;
+  height: 5vw;
+  width: 5vw;
+  background-image: url('../../assets/pointer.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
   position: absolute;
-  top: calc(50% - 12.5vw - 2vw);
+  top: calc(50% - 2.5vw);
   z-index: 20;
-  left: calc(50% - 1vw);
+  right: calc(27.5vw - 3vw);
 }
 
 #root {
@@ -33,5 +36,18 @@
   overflow: hidden;
   height: 100vh;
   width: 100vw;
-  background-color: #CFDEE7;
+  background-image: url('../../assets/cinnamon-background.png');
+  background-size: cover;
+}
+
+.center-logo {
+  position: relative;
+  top: 1vw;
+  left: 1vw;
+  height: 8vw;
+  width: 8vw;
+  background-image: url('../../assets/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
