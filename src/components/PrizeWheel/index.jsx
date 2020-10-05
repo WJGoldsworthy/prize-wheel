@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Modal, ModalHeader, ModalFooter, ModalBody } from 'reactstrap';
 import prizes from './prizes';
 import './index.scss'
 
@@ -7,13 +8,16 @@ const PrizeWheel = () => {
 	// const [selectedPrize, setSelectedPrize] = useState(null);
 	const [shouldSpinWheel, setShouldSpinWheel] = useState(false);
 	const [reset, setReset] = useState(false);
+	const [prizeWon, setPrizeWon] = useState(null);
+	const [showModal, setShowModal] = useState(false);
 	const [spinToDeg, setSpinToDeg] = useState('0deg');
 
 	// Circle is 360 degrees, so need to work out the size of each prize section
 	const wheelSectionSize = Math.floor(360 / prizes.length);
-	// const numberOfSegments = prizes.length;
 	const wheelHeight = 45;
-	const spinTime = 10; // seconds
+	const spinTime = 2; // seconds
+
+	const toggleModal = () => setShowModal(!showModal);
 
 	const spinWheel = () => {
 		if (!reset) {
@@ -33,7 +37,7 @@ const PrizeWheel = () => {
 		if (prize < 0) {
 			prize = prizes.length + prize;
 		}
-		console.log(prize);
+		setPrizeWon(prize);
 	}
 
 	useEffect(() => {
@@ -41,6 +45,7 @@ const PrizeWheel = () => {
 			setShouldSpinWheel(true);
 			const timeout = spinTime * 1000;
 			setTimeout(() => {
+				toggleModal();
 				setReset(false)
 			}, timeout)
 		}
@@ -57,8 +62,8 @@ const PrizeWheel = () => {
 			'width': `${wheelHeight}vw`,
 			'transform': 'rotate(0deg)',
 			'overflow': 'hidden',
-			'box-shadow': '0 0 0 8px #FAFAFA',
-			'border-radius': '50%'
+			'boxShadow': '0 0 0 8px #FAFAFA',
+			'borderRadius': '50%'
 		}}>
 			<style dangerouslySetInnerHTML={{__html: `
 				.spin {
@@ -120,6 +125,23 @@ const PrizeWheel = () => {
 			<div className="wheel-spin-button" />
 			<div className="center-logo" />
 		</div>
+		<Modal centered={true} isOpen={showModal} toggle={toggleModal} className="prize-modal">
+			<ModalHeader>
+				<div className="modal-logo"/>
+			</ModalHeader>
+			<ModalBody>
+				<div className="prize-modal-title">
+					WE HAVE A WINNER
+				</div>
+				<div className="prize-modal-prize">
+					{prizes[prizeWon] && prizes[prizeWon].toUpperCase()}
+				</div>
+				<div className="cinnamon-icons">
+					<div className="cinnamon-left"/>
+					<div className="cinnamon-right"/>
+				</div>
+			</ModalBody>
+		</Modal>
 		</>
 	);
 };

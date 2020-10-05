@@ -12,7 +12,7 @@
   font-size: 1.5vw;
     z-index: 10;
     float: right;
-    top: 78%;
+    top: 84%;
     transform: rotate(-9deg);
     right: 2.5vw;
     position: relative;
@@ -47,6 +47,75 @@
   height: 8vw;
   width: 8vw;
   background-image: url('../../assets/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.modal-title {
+  width: 100%;
+}
+
+.modal-header {
+  border-bottom: none;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.modal-body {
+  text-align: center;
+}
+
+.modal-logo {
+  position: relative;
+  width: 162px;
+  height: 111px;
+  left: calc(50% - 81px);
+  background-image: url('../../assets/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.prize-modal-title {
+  font-size: 32px;
+  line-height: 60px;
+}
+
+.prize-modal-prize {
+  font-size: 48px;
+  line-height: 60px;
+  color: #FF9900;
+  font-weight: bold;
+}
+
+.cinnamon-icons {
+  width: 140%;
+  position: relative;
+  left: -20%;
+  height: 70px;
+}
+
+.cinnamon-left {
+  float: left;
+  position: absolute;
+  top: -80px;
+  height: 170px;
+  width: 170px;
+  background-image: url('../../assets/cinnamon1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cinnamon-right {
+  float: right;
+  position: absolute;
+  right: 0px;
+  top: -80px;
+  height: 170px;
+  width: 170px;
+  background-image: url('../../assets/cinnamon2.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
