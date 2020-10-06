@@ -82,7 +82,8 @@ const PrizeWheel = () => {
 			'transform': 'rotate(0deg)',
 			'overflow': 'hidden',
 			'boxShadow': '0 0 0 8px #FAFAFA',
-			'borderRadius': '50%'
+			'borderRadius': '50%',
+			'filter': 'drop-shadow(0px 0px 40px rgba(0, 0, 0, 0.1))'
 		}}>
 			<style dangerouslySetInnerHTML={{__html: `
 				.spin {
