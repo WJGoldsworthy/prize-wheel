@@ -16,7 +16,7 @@ const PrizeWheel = () => {
 	// Circle is 360 degrees, so need to work out the size of each prize section
 	const wheelSectionSize = Math.floor(360 / prizes.length);
 	const wheelHeight = 45;
-	const spinTime = 10; // seconds
+	const spinTime = 5; // seconds
 
 	const toggleModal = () => setShowModal(!showModal);
 
