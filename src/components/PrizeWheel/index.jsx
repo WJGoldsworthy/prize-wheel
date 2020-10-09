@@ -15,7 +15,7 @@ const PrizeWheel = () => {
 
 	// Circle is 360 degrees, so need to work out the size of each prize section
 	const wheelSectionSize = Math.floor(360 / prizes.length);
-	const wheelHeight = 45;
+	const wheelHeight = 40;
 	const spinTime = 5; // seconds
 
 	const toggleModal = () => setShowModal(!showModal);
@@ -69,6 +69,9 @@ const PrizeWheel = () => {
 
 	return (
 		<>
+		<div className="prize-wheel-title">
+			SPIN TO WIN
+		</div>
 		<div className="prize-pointer"></div>
 		<div className="confetti"> 
 			<Confetti active={!reset} config={ config } />
@@ -167,20 +170,3 @@ const PrizeWheel = () => {
 };
 
 export default PrizeWheel;
-
-
-/*
-{prizes.map(prize => (
-	<li className="spinner-slice">
-		<p className="spinner-slice-text">{prize}</p>
-	</li>
-))}
-
-
-
-				{prizes.map((prize, index) => (
-					<div style={{'transform': `rotate(${wheelSectionSize * index}deg)`, 'position': 'absolute'}}>
-						<PrizeSegment size={wheelSectionSize} label={prize} />
-					</div>
-				))}
-/*/
