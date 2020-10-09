@@ -86,6 +86,10 @@
   background-position: center;
 }
 
+.modal-dialog {
+  max-width: 600px !important;
+}
+
 .modal-title {
   width: 100%;
 }
