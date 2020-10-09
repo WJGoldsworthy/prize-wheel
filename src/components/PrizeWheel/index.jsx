@@ -27,7 +27,7 @@ const PrizeWheel = () => {
 			determinePrize(spinNumber);
 			// Offset to deal with centering and correct prize
 			const offset = Math.floor( (360 / prizes.length) / 2 ) + ( Math.floor( 360 / prizes.length ) );
-			const spinDeg = Math.floor( (360 / prizes.length) * spinNumber ) + 3600 + offset;
+			const spinDeg = Math.floor( (360 / prizes.length) * spinNumber ) + 1080 + offset;
 			setSpinToDeg(`${spinDeg}deg`);
 			setReset(true);
 		}
