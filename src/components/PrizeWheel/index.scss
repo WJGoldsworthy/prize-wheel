@@ -8,7 +8,26 @@
   font-family: 'Kanit', sans-serif;
   letter-spacing: 2px;
   top: 2vw;
+  z-index: 10;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.influencer-title {
+  position: absolute;
+  font-size: 90px;
+  width: 30vw;
+  left: 0vw;
+  text-align: right;
+  top: 15vh;
+  color: white;
+  font-weight: bold;
+  font-family: 'Kanit', sans-serif;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+
+  &#W2S {
+    text-align: center;
+  }
 }
 
 .wheel-spin-button-container {
@@ -24,10 +43,10 @@
 }
 
 .prize-label {
-  font-size: 1.5vw;
+  font-size: 1.3vw;
     z-index: 10;
     float: right;
-    top: 82.5%;
+    top: 83.5%;
     transform: rotate(-9deg);
     right: 1.5vw;
     position: relative;

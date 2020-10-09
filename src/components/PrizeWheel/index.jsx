@@ -4,9 +4,8 @@ import { Modal, ModalHeader, ModalFooter, ModalBody } from 'reactstrap';
 import prizes from './prizes';
 import './index.scss'
 
-const PrizeWheel = () => {
+const PrizeWheel = ({title}) => {
 
-	// const [selectedPrize, setSelectedPrize] = useState(null);
 	const [shouldSpinWheel, setShouldSpinWheel] = useState(false);
 	const [reset, setReset] = useState(false);
 	const [prizeWon, setPrizeWon] = useState(null);
@@ -69,6 +68,9 @@ const PrizeWheel = () => {
 
 	return (
 		<>
+		<div className="influencer-title" id={title}>
+			{title}
+		</div>
 		<div className="prize-wheel-title">
 			SPIN TO WIN
 		</div>
