@@ -72,7 +72,7 @@ const PrizeWheel = ({title}) => {
 			{title}
 		</div>
 		<div className="prize-wheel-title">
-			SPIN TO WIN
+			TALEN’T BOUNTY WHEEL
 		</div>
 		<div className="prize-pointer"></div>
 		<div className="confetti"> 
