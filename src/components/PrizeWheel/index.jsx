@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Confetti from 'react-dom-confetti';
-import { Modal, ModalHeader, ModalFooter, ModalBody } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import prizes from './prizes';
 import './index.scss'
 
@@ -13,7 +13,7 @@ const PrizeWheel = ({title}) => {
 	const [spinToDeg, setSpinToDeg] = useState('0deg');
 
 	// Circle is 360 degrees, so need to work out the size of each prize section
-	const wheelSectionSize = Math.floor(360 / prizes.length);
+	const wheelSectionSize = Math.floor(360 / 20);
 	const wheelHeight = 40;
 	const spinTime = 5; // seconds
 
@@ -22,20 +22,20 @@ const PrizeWheel = ({title}) => {
 	const spinWheel = () => {
 		if (!reset) {
 			setShouldSpinWheel(false)
-			const spinNumber = Math.ceil(Math.random() * prizes.length);
+			const spinNumber = Math.ceil(Math.random() * 20);
 			determinePrize(spinNumber);
 			// Offset to deal with centering and correct prize
-			const offset = Math.floor( (360 / prizes.length) / 2 ) + ( Math.floor( 360 / prizes.length ) );
-			const spinDeg = Math.floor( (360 / prizes.length) * spinNumber ) + 1080 + offset;
+			const offset = Math.floor( (360 / 20) / 2 ) + ( Math.floor( 360 / 20 ) );
+			const spinDeg = Math.floor( (360 / 20) * spinNumber ) + 1080 + offset;
 			setSpinToDeg(`${spinDeg}deg`);
 			setReset(true);
 		}
 	};
 
 	const determinePrize = spinNumber => {
-		let prize = prizes.length - (spinNumber + 1);
+		let prize = prizes[title].length - (spinNumber + 1);
 		if (prize < 0) {
-			prize = prizes.length + prize;
+			prize = prizes[title].length + prize;
 		}
 		setPrizeWon(prize);
 	}
@@ -107,7 +107,7 @@ const PrizeWheel = ({title}) => {
 				}
 			`}} />
 			<div id="wheel" className="spinner-list">
-				{prizes.map((prize, index) => (
+				{prizes[title].map((prize, index) => (
 					<>
 
 
@@ -159,7 +159,7 @@ const PrizeWheel = ({title}) => {
 					WE HAVE A WINNER
 				</div>
 				<div className="prize-modal-prize">
-					{prizes[prizeWon] && prizes[prizeWon].toUpperCase()}
+					{prizes[title][prizeWon] && prizes[title][prizeWon].toUpperCase()}
 				</div>
 				<div className="cinnamon-icons">
 					<div className="cinnamon-left"/>
